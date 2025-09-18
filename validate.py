@@ -6,12 +6,18 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 if "SUMO_HOME" not in os.environ:
-    os.environ["SUMO_HOME"] = r"C:\Program Files (x86)\Eclipse\Sumo"
+    if os.name == "nt":  # Windows
+        default_sumo = r"C:\Program Files (x86)\Eclipse\Sumo"
+    else:  # Linux / Mac
+        default_sumo = "/usr/share/sumo"
+    os.environ["SUMO_HOME"] = default_sumo
+
 tools = os.path.join(os.environ["SUMO_HOME"], "tools")
 sys.path.append(tools)
 
-CONFIG_FILE = r"C:\Users\Sanjay Ramalingam\Desktop\Vit sem 3\CAO\projecy\project test\simple_intersection.sumocfg"
-MODEL_FILE = "traffic_model_4phases.h5"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_FILE = os.path.join(SCRIPT_DIR, "simple_intersection.sumocfg")
+MODEL_FILE = os.path.join(SCRIPT_DIR, "traffic_model_4phases.h5")
 
 model = tf.keras.models.load_model(MODEL_FILE)
 
@@ -135,7 +141,7 @@ def print_avg_metrics(metrics, mode="model"):
 
 if __name__ == "__main__":
     steps = 200
-    save_folder = "plots"
+    save_folder = os.path.join(SCRIPT_DIR, "plots")
 
     print("Running model-based traffic signal...")
     model_metrics = run_mode(mode="model", steps=steps)

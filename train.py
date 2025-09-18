@@ -5,12 +5,19 @@ import traci
 import tensorflow as tf
 from tensorflow.keras import layers, models
 
+
 if "SUMO_HOME" not in os.environ:
-    os.environ["SUMO_HOME"] = r"C:\Program Files (x86)\Eclipse\Sumo"
+    if os.name == "nt":  # Windows
+        default_sumo = r"C:\Program Files (x86)\Eclipse\Sumo"
+    else:  # Linux / Mac
+        default_sumo = "/usr/share/sumo"
+    os.environ["SUMO_HOME"] = default_sumo
+
 tools = os.path.join(os.environ["SUMO_HOME"], "tools")
 sys.path.append(tools)
 
-CONFIG_FILE = r"C:\Users\Sanjay Ramalingam\Desktop\Vit sem 3\CAO\projecy\project test\simple_intersection.sumocfg"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_FILE = os.path.join(SCRIPT_DIR, "simple_intersection.sumocfg")
 
 def build_model(input_dim, output_dim):
     model = models.Sequential()
@@ -71,5 +78,6 @@ if __name__ == "__main__":
     model = build_model(input_dim=X.shape[1], output_dim=y.shape[1])
     model.fit(X, y, epochs=20, batch_size=32, validation_split=0.2)
 
-    model.save("traffic_model_4phases.h5")
-    print("Model trained and saved as traffic_model_4phases.h5")
+    model_path = os.path.join(SCRIPT_DIR, "traffic_model_4phases.h5")
+    model.save(model_path)
+    print(f"Model trained and saved as {model_path}")

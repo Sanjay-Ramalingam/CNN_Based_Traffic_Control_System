@@ -1,0 +1,28 @@
+<routes>
+    <!-- Vehicle types -->
+    <vType id="car" accel="2.0" decel="4.5" sigma="0.5" length="5.0" minGap="2.5" maxSpeed="13.9"/>
+    <vType id="bus" accel="1.0" decel="3.0" sigma="0.5" length="12.0" minGap="3.0" maxSpeed="8.0"/>
+    <vType id="bike" accel="2.5" decel="5.0" sigma="0.3" length="2.0" minGap="1.0" maxSpeed="15.0"/>
+    <vType id="auto" accel="1.5" decel="3.5" sigma="0.5" length="3.0" minGap="2.0" maxSpeed="10.0"/>
+
+    <!-- Increased vehicle flow to simulate congestion -->
+    <flow id="north_south_car" type="car" begin="0" end="3600" number="300" from="north_in" to="south_out"/>
+    <flow id="north_south_bus" type="bus" begin="0" end="3600" number="50" from="north_in" to="south_out"/>
+    <flow id="north_south_bike" type="bike" begin="0" end="3600" number="100" from="north_in" to="south_out"/>
+    <flow id="north_south_auto" type="auto" begin="0" end="3600" number="80" from="north_in" to="south_out"/>
+
+    <flow id="south_north_car" type="car" begin="0" end="3600" number="300" from="south_in" to="north_out"/>
+    <flow id="south_north_bus" type="bus" begin="0" end="3600" number="50" from="south_in" to="north_out"/>
+    <flow id="south_north_bike" type="bike" begin="0" end="3600" number="100" from="south_in" to="north_out"/>
+    <flow id="south_north_auto" type="auto" begin="0" end="3600" number="80" from="south_in" to="north_out"/>
+
+    <flow id="east_west_car" type="car" begin="0" end="3600" number="300" from="east_in" to="west_out"/>
+    <flow id="east_west_bus" type="bus" begin="0" end="3600" number="50" from="east_in" to="west_out"/>
+    <flow id="east_west_bike" type="bike" begin="0" end="3600" number="100" from="east_in" to="west_out"/>
+    <flow id="east_west_auto" type="auto" begin="0" end="3600" number="80" from="east_in" to="west_out"/>
+
+    <flow id="west_east_car" type="car" begin="0" end="3600" number="300" from="west_in" to="east_out"/>
+    <flow id="west_east_bus" type="bus" begin="0" end="3600" number="50" from="west_in" to="east_out"/>
+    <flow id="west_east_bike" type="bike" begin="0" end="3600" number="100" from="west_in" to="east_out"/>
+    <flow id="west_east_auto" type="auto" begin="0" end="3600" number="80" from="west_in" to="east_out"/>
+</routes>

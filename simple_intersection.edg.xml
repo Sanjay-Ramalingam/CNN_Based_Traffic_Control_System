@@ -1,11 +1,13 @@
 <edges>
-    <edge id="north_in" from="n_in" to="center" numLanes="1" speed="13.9"/>
-    <edge id="south_in" from="s_in" to="center" numLanes="1" speed="13.9"/>
-    <edge id="east_in" from="e_in" to="center" numLanes="1" speed="13.9"/>
-    <edge id="west_in" from="w_in" to="center" numLanes="1" speed="13.9"/>
+    <!-- Incoming edges -->
+    <edge id="north_in" from="n_in" to="center" numLanes="3" speed="13.9" priority="-1"/>
+    <edge id="south_in" from="s_in" to="center" numLanes="3" speed="13.9" priority="-1"/>
+    <edge id="east_in" from="e_in" to="center" numLanes="3" speed="13.9" priority="-1"/>
+    <edge id="west_in" from="w_in" to="center" numLanes="3" speed="13.9" priority="-1"/>
 
-    <edge id="north_out" from="center" to="n_out" numLanes="1" speed="13.9"/>
-    <edge id="south_out" from="center" to="s_out" numLanes="1" speed="13.9"/>
-    <edge id="east_out" from="center" to="e_out" numLanes="1" speed="13.9"/>
-    <edge id="west_out" from="center" to="w_out" numLanes="1" speed="13.9"/>
+    <!-- Outgoing edges -->
+    <edge id="north_out" from="center" to="n_out" numLanes="3" speed="13.9" priority="-1"/>
+    <edge id="south_out" from="center" to="s_out" numLanes="3" speed="13.9" priority="-1"/>
+    <edge id="east_out" from="center" to="e_out" numLanes="3" speed="13.9" priority="-1"/>
+    <edge id="west_out" from="center" to="w_out" numLanes="3" speed="13.9" priority="-1"/>
 </edges>
